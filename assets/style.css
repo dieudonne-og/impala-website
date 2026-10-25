@@ -980,36 +980,6 @@ a.lg:hover .fl{transform:rotate(-12deg) scale(1.1)}
 .hero-mark{z-index:1}
 .hero-copy{position:relative;z-index:3}
 
-/* =====================================================================
-   v7: real photo hero (no gradient, no tint, no see-through layer)
-   copy sits on a solid teal card, the impala in a solid teal medallion
-   ===================================================================== */
-.hero{background:#173F4F}
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:#173F4F}
-.hero-bg .hb{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0}
-.hero-bg .hb1{background-image:url(img/hero/hero-c1.jpg);opacity:1;z-index:1}
-.hero.ready .hb2{background-image:url(img/hero/hero-c2.jpg)}
-.hero.ready .hb3{background-image:url(img/hero/hero-c3.jpg)}
-.hero.ready .hb4{background-image:url(img/hero/hero-c4.jpg)}
-html.js .hero.ready .hb{animation:heropics 32s linear infinite}
-html.js .hero.ready .hb1{animation-delay:-2.5s}
-html.js .hero.ready .hb2{animation-delay:5.5s}
-html.js .hero.ready .hb3{animation-delay:13.5s}
-html.js .hero.ready .hb4{animation-delay:21.5s}
-@keyframes heropics{0%{opacity:0;z-index:3}6%{opacity:1;z-index:3}6.1%{opacity:1;z-index:2}31%{opacity:1;z-index:2}31.1%{opacity:0;z-index:1}100%{opacity:0;z-index:1}}
-.hero .flow{display:none}
-.hero .wrap{align-items:center}
-.hero-copy{background:var(--teal);border:1px solid #4A8AA0;border-radius:28px;padding:clamp(24px,3.2vw,44px);max-width:min(740px,100%)}
-.medal{position:absolute;right:max(var(--gutter),4%);top:50%;transform:translateY(-50%);width:min(430px,34vw);aspect-ratio:1;border-radius:50%;background:var(--teal);border:6px solid #fff;overflow:hidden;z-index:2;pointer-events:none}
-.medal .hero-mark{position:absolute;left:0;right:0;margin:0 auto;bottom:-14%;height:122%;width:auto;aspect-ratio:640/953;opacity:1}
-.hero .medal .hero-mark use[fill="#fff"]{fill:#fff}
-.hero .medal .hero-mark .imp-outline{stroke:#fff}
-@media (max-width:899px){
-  .medal{position:relative;right:auto;top:auto;transform:none;width:150px;margin:0 auto 18px;border-width:4px;order:-1}
-  .hero .wrap{padding-top:28px}
-}
-@media (prefers-reduced-motion:reduce){html.js .hero.ready .hb{animation:none}.hero.ready .hb2,.hero.ready .hb3,.hero.ready .hb4{background-image:none}}
-
 /* header: fits French labels between 900px and 1100px */
 @media (min-width:900px) and (max-width:1100px){
   .top .wrap{gap:10px}
@@ -1021,9 +991,3 @@ html.js .hero.ready .hb4{animation-delay:21.5s}
   .tools-top{margin-left:4px}
 }
 
-/* hero: narrower copy card so more of the photo shows */
-.hero-copy{max-width:min(540px,100%);padding:clamp(22px,2.6vw,36px)}
-.hero h1{font-size:clamp(2.2rem,4.3vw,3.8rem)}
-.hero .sub{font-size:clamp(1rem,1.3vw,1.12rem);margin:16px 0 22px}
-.hero .search .field{padding:5px}
-@media (min-width:900px) and (max-width:1100px){.medal{width:min(430px,27vw)}}

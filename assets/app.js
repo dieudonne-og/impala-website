@@ -13,9 +13,6 @@
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
 
-  /* hero photos 2 to 4 load after the page, so the first screen stays fast */
-  window.addEventListener("load", function () { var h = $(".hero"); if (h) setTimeout(function () { h.classList.add("ready"); }, 400); });
-
   /* ---------- mobile menu ---------- */
   var mb = $(".menu-btn"), nav = $("#nav");
   if (mb && nav) mb.addEventListener("click", function () { var o = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
