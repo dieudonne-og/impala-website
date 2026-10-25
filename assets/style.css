@@ -951,18 +951,6 @@ a.lg:hover .fl{transform:rotate(-12deg) scale(1.1)}
 /* =====================================================================
    v6: photo backgrounds (hero slideshow, call-to-action band, services)
    ===================================================================== */
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--teal)}
-.hero-bg .hb{position:absolute;inset:-2%;background-size:cover;background-position:center;opacity:0}
-.hero-bg .hb1{background-image:url(img/hero/hero-1.jpg);opacity:.5}
-.hero-bg .hb2{background-image:url(img/hero/hero-2.jpg)}
-.hero-bg .hb3{background-image:url(img/hero/hero-3.jpg)}
-.hero-bg .hb4{background-image:url(img/hero/hero-4.jpg)}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,95,115,.95) 0%,rgba(36,95,115,.8) 40%,rgba(36,95,115,.4) 70%,rgba(36,95,115,.1) 100%)}
-html.js .hero-bg .hb{opacity:0;animation:heroslide 28s ease-in-out infinite}
-html.js .hero-bg .hb2{animation-delay:7s}
-html.js .hero-bg .hb3{animation-delay:14s}
-html.js .hero-bg .hb4{animation-delay:21s}
-@keyframes heroslide{0%{opacity:0;transform:scale(1.07)}5%{opacity:.85}24%{opacity:.85;transform:scale(1)}30%{opacity:0;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
 .hero .flow{z-index:1}
 .hero-copy,.hero .wrap{z-index:2}
 .hero-mark{z-index:2}
@@ -974,11 +962,9 @@ html.js .hero-bg .hb4{animation-delay:21s}
 .svc-block:hover .svc-ph img{transform:scale(1.04)}
 .svc-block.alt .svc-ph{order:2}
 @media (max-width:899px){.svc-block .wrap,.svc-block.alt .wrap{grid-template-columns:minmax(0,1fr)}.svc-block.alt .svc-ph{order:0}.hero-bg::after{background:linear-gradient(180deg,rgba(36,95,115,.9),rgba(36,95,115,.7))}}
-@media (prefers-reduced-motion:reduce){html.js .hero-bg .hb{animation:none}html.js .hero-bg .hb1{opacity:.5}}
 
 /* hero: solid colours only, no transparency */
 .hero{background:var(--teal)}
-.hero-bg{display:none}
 .hero .flow{opacity:1}
 .hero .flow path{stroke:#4C8CA1}
 .hero .flow path+path{opacity:1;stroke:#43829A}
@@ -993,3 +979,44 @@ html.js .hero-bg .hb4{animation-delay:21s}
 @media (prefers-reduced-motion:reduce){.hero-mark .imp-fill{opacity:1!important}}
 .hero-mark{z-index:1}
 .hero-copy{position:relative;z-index:3}
+
+/* =====================================================================
+   v7: real photo hero (no gradient, no tint, no see-through layer)
+   copy sits on a solid teal card, the impala in a solid teal medallion
+   ===================================================================== */
+.hero{background:#173F4F}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:#173F4F}
+.hero-bg .hb{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0}
+.hero-bg .hb1{background-image:url(img/hero/hero-c1.jpg);opacity:1;z-index:1}
+.hero.ready .hb2{background-image:url(img/hero/hero-c2.jpg)}
+.hero.ready .hb3{background-image:url(img/hero/hero-c3.jpg)}
+.hero.ready .hb4{background-image:url(img/hero/hero-c4.jpg)}
+html.js .hero.ready .hb{animation:heropics 32s linear infinite}
+html.js .hero.ready .hb1{animation-delay:-2.5s}
+html.js .hero.ready .hb2{animation-delay:5.5s}
+html.js .hero.ready .hb3{animation-delay:13.5s}
+html.js .hero.ready .hb4{animation-delay:21.5s}
+@keyframes heropics{0%{opacity:0;z-index:3}6%{opacity:1;z-index:3}6.1%{opacity:1;z-index:2}31%{opacity:1;z-index:2}31.1%{opacity:0;z-index:1}100%{opacity:0;z-index:1}}
+.hero .flow{display:none}
+.hero .wrap{align-items:center}
+.hero-copy{background:var(--teal);border:1px solid #4A8AA0;border-radius:28px;padding:clamp(24px,3.2vw,44px);max-width:min(740px,100%)}
+.medal{position:absolute;right:max(var(--gutter),4%);top:50%;transform:translateY(-50%);width:min(430px,34vw);aspect-ratio:1;border-radius:50%;background:var(--teal);border:6px solid #fff;overflow:hidden;z-index:2;pointer-events:none}
+.medal .hero-mark{position:absolute;left:0;right:0;margin:0 auto;bottom:-14%;height:122%;width:auto;aspect-ratio:640/953;opacity:1}
+.hero .medal .hero-mark use[fill="#fff"]{fill:#fff}
+.hero .medal .hero-mark .imp-outline{stroke:#fff}
+@media (max-width:899px){
+  .medal{position:relative;right:auto;top:auto;transform:none;width:150px;margin:0 auto 18px;border-width:4px;order:-1}
+  .hero .wrap{padding-top:28px}
+}
+@media (prefers-reduced-motion:reduce){html.js .hero.ready .hb{animation:none}.hero.ready .hb2,.hero.ready .hb3,.hero.ready .hb4{background-image:none}}
+
+/* header: fits French labels between 900px and 1100px */
+@media (min-width:900px) and (max-width:1100px){
+  .top .wrap{gap:10px}
+  .nav>a,.dd>a{padding:10px 8px;font-size:.94rem}
+  .langsw{margin-left:4px}
+  .lg b{display:none}
+  .lg{padding:3px}
+  .brand span{font-size:1.2rem}
+  .tools-top{margin-left:4px}
+}
