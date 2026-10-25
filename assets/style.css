@@ -975,3 +975,21 @@ html.js .hero-bg .hb4{animation-delay:21s}
 .svc-block.alt .svc-ph{order:2}
 @media (max-width:899px){.svc-block .wrap,.svc-block.alt .wrap{grid-template-columns:minmax(0,1fr)}.svc-block.alt .svc-ph{order:0}.hero-bg::after{background:linear-gradient(180deg,rgba(36,95,115,.9),rgba(36,95,115,.7))}}
 @media (prefers-reduced-motion:reduce){html.js .hero-bg .hb{animation:none}html.js .hero-bg .hb1{opacity:.5}}
+
+/* hero: solid colours only, no transparency */
+.hero{background:var(--teal)}
+.hero-bg{display:none}
+.hero .flow{opacity:1}
+.hero .flow path{stroke:#4C8CA1}
+.hero .flow path+path{opacity:1;stroke:#43829A}
+.hero .chips a{border-color:#7FB0C0}
+.hero .chips a:hover{background:#2F6F85;border-color:#A9CBD6}
+.hero .sub{color:#E3EFF3}
+@media (max-width:899px){
+  .hero-mark{opacity:1}
+  .hero-mark use[fill="#fff"]{fill:#3A7A90}
+  .hero-mark .imp-outline{stroke:#3A7A90}
+}
+@media (prefers-reduced-motion:reduce){.hero-mark .imp-fill{opacity:1!important}}
+.hero-mark{z-index:1}
+.hero-copy{position:relative;z-index:3}
