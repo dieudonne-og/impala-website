@@ -1020,3 +1020,10 @@ html.js .hero.ready .hb4{animation-delay:21.5s}
   .brand span{font-size:1.2rem}
   .tools-top{margin-left:4px}
 }
+
+/* hero: narrower copy card so more of the photo shows */
+.hero-copy{max-width:min(540px,100%);padding:clamp(22px,2.6vw,36px)}
+.hero h1{font-size:clamp(2.2rem,4.3vw,3.8rem)}
+.hero .sub{font-size:clamp(1rem,1.3vw,1.12rem);margin:16px 0 22px}
+.hero .search .field{padding:5px}
+@media (min-width:900px) and (max-width:1100px){.medal{width:min(430px,27vw)}}
