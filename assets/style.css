@@ -797,3 +797,181 @@ html.js .rv.in .pipe .imp-ic{opacity:1;animation:pronk 1.5s linear .3s backwards
   html.js .hero-mark .imp-fill{opacity:1}
   .hero-mark .imp-outline,html.js .hero-mark .imp-outline{display:none}
 }
+
+/* =====================================================================
+   v5: reference-style product grid, clients, equipment, widget, map
+   ===================================================================== */
+/* product card: category, name, price line, two buttons */
+.card .ccat{font-size:.82rem;font-weight:600;color:var(--teal);text-decoration:none}
+.card .price{margin:0;color:var(--muted);font-size:.92rem;font-weight:500}
+.cbody h3{flex:0 0 auto;min-height:2.6em}
+.cbody .tags{min-height:0}
+.cact.two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.cact.two .btn.sm,.cact.two .add{min-height:44px;padding:0 8px;font-size:.92rem;border-radius:999px;text-align:center}
+.btn.sm{border-width:1.5px}
+.cards.featured{grid-template-columns:repeat(auto-fill,minmax(248px,1fr))}
+.cbody{flex:1}
+.shop-head{margin:6px 0 20px}
+.shop-head h2{font-size:clamp(1.6rem,2.8vw,2.3rem)}
+.shop-head p{color:var(--muted);margin:6px 0 0}
+.more.center{text-align:center;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+#rows[hidden]{display:none}
+.cards.list .cact.two{min-width:280px}
+
+/* clients */
+.logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:14px}
+.logos li{display:grid;place-items:center;aspect-ratio:1/1;padding:12px;background:#fff;border:1.5px solid var(--line);border-radius:18px;transition:transform .3s var(--ease),border-color .25s,box-shadow .3s}
+.logos li:hover{transform:translateY(-5px);border-color:var(--teal);box-shadow:0 20px 30px -22px rgba(36,95,115,.7)}
+.logos img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+
+/* equipment and supplies */
+.supply{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.supply figure{margin:0;border:1.5px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;height:100%;display:flex;flex-direction:column;transition:transform .3s var(--ease),border-color .25s,box-shadow .3s}
+.supply figure:hover{transform:translateY(-5px);border-color:var(--teal);box-shadow:0 20px 30px -22px rgba(36,95,115,.7)}
+.supply img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#fff;padding:6px}
+.supply figcaption{padding:12px 12px 14px;font:600 .98rem/1.25 var(--display);border-top:1px solid var(--line);flex:1}
+.supply-sec .more{margin-top:30px}
+
+/* seo text */
+.seo-text{padding-block:clamp(36px,5vw,64px)}
+.seo-text h2{font-size:clamp(1.4rem,2.4vw,1.9rem);margin-bottom:12px}
+.seo-text p{color:var(--muted);max-width:none}
+
+/* map */
+.mapbox{margin-top:22px;border-radius:20px;overflow:hidden;border:1.5px solid var(--line);aspect-ratio:16/10;background:var(--wash)}
+.map{width:100%;height:100%;border:0;display:block}
+
+/* floating WhatsApp + call widget (desktop; phones have the bottom bar) */
+.fab{position:fixed;right:22px;bottom:24px;z-index:70;display:none;flex-direction:column;gap:12px;align-items:flex-end}
+.fab-btn{display:flex;flex-direction:row-reverse;align-items:center;gap:0;height:58px;min-width:58px;padding:0 16px;border-radius:29px;color:#fff;text-decoration:none;font-weight:600;box-shadow:0 14px 30px -12px rgba(15,42,52,.6);transition:gap .25s var(--ease),padding .25s var(--ease),transform .25s var(--ease);position:relative}
+.fab-btn svg{width:26px;height:26px;flex:none}
+.fab-btn span{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .3s var(--ease),opacity .2s}
+.fab-btn:hover,.fab-btn:focus-visible{gap:10px;padding:0 20px;transform:translateX(-2px)}
+.fab-btn:hover span,.fab-btn:focus-visible span{max-width:220px;opacity:1}
+.fab-wa{background:#1FAF5A}
+.fab-call{background:var(--teal)}
+.fab-wa::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid #1FAF5A;animation:ring 2.6s ease-out infinite;pointer-events:none}
+@keyframes ring{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(1.5);opacity:0}}
+@media (min-width:900px){.fab{display:flex}}
+
+/* footer: popular searches and credits */
+.foot .popular{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.16);padding-top:24px}
+.foot .popular ul{display:flex;flex-wrap:wrap;gap:8px}
+.foot .popular a{display:inline-block;padding:6px 13px;border:1px solid rgba(255,255,255,.28);border-radius:999px;color:#DCEBEF;font-size:.9rem;text-decoration:none;transition:background .2s,color .2s}
+.foot .popular a:hover{background:rgba(255,255,255,.14);color:#fff;text-decoration:none}
+.foot small{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap}
+.foot .credit a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.foot .credit a:hover{color:#BFE3EE}
+
+/* hero impala: livelier and faster */
+html.js .hero-mark{animation:floaty 4.6s ease-in-out 1.3s infinite}
+html.js .hero-mark .imp-fill{animation:impfill .8s var(--ease) .7s forwards}
+html.js .hero-mark .imp-outline{animation:impdraw 1.1s cubic-bezier(.55,.1,.3,1) .1s forwards,impfade .5s ease 1.25s forwards}
+html.js .hero-mark .el{animation:twitchL 2.6s ease-in-out 1.7s infinite}
+html.js .hero-mark .er{animation:twitchR 3.1s ease-in-out 1.95s infinite}
+@keyframes floaty{0%,100%{transform:translateY(0) scale(1) rotate(0)}50%{transform:translateY(-10px) scale(1.014) rotate(-.7deg)}}
+@keyframes twitchL{0%,58%,100%{transform:rotate(0)}64%{transform:rotate(8deg)}70%{transform:rotate(-3deg)}76%{transform:rotate(5deg)}84%{transform:rotate(0)}}
+@keyframes twitchR{0%,52%,100%{transform:rotate(0)}58%{transform:rotate(-8deg)}64%{transform:rotate(3deg)}70%{transform:rotate(-5deg)}78%{transform:rotate(0)}}
+.hero-mark .glint{transform-box:view-box;opacity:0}
+html.js .hero-mark .glint{animation:glint 3.4s ease-in-out 1.9s infinite}
+@keyframes glint{0%{transform:translateX(0);opacity:0}8%{opacity:.7}45%{opacity:.7}60%,100%{transform:translateX(1050px);opacity:0}}
+/* section impala keeps moving after it settles */
+html.js .rv.in .pipe .imp-ic{animation:pronk 1.5s linear .3s backwards,idlehop 3.4s ease-in-out 2.2s infinite}
+@keyframes idlehop{0%,66%,100%{transform:translate(0,0) rotate(0)}74%{transform:translate(0,-7px) rotate(-9deg)}82%{transform:translate(0,0) rotate(3deg)}90%{transform:translate(0,-3px) rotate(-4deg)}}
+
+@media (max-width:1180px){
+  .logos{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .supply{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:899px){
+  .logos{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .supply{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .logos li{padding:8px;border-radius:14px}
+  .supply{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .cact.two{grid-template-columns:1fr}
+  .cards.featured{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot small{flex-direction:column}
+}
+@media (max-width:420px){
+  .cards.featured{grid-template-columns:1fr}
+  .logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){
+  .fab-wa::after{animation:none;display:none}
+  .hero-mark .glint{display:none}
+  html.js .rv.in .pipe .imp-ic{animation:none}
+}
+
+/* language switcher with flags */
+.langsw{display:flex;gap:2px;margin-left:8px;padding:3px;border:1.5px solid var(--line);border-radius:999px;background:#fff}
+.lg{display:flex;align-items:center;gap:7px;padding:3px 11px 3px 4px;border-radius:999px;text-decoration:none;color:var(--ink);font-size:.85rem;transition:background .2s,color .2s}
+.lg b{font-weight:700;letter-spacing:.02em}
+.lg .fl{width:24px;height:24px;border-radius:50%;overflow:hidden;display:block;flex:none;box-shadow:0 0 0 1px rgba(15,42,52,.18);transition:transform .3s var(--ease)}
+.lg .fl svg{width:100%;height:100%;display:block}
+.lg.on{background:var(--wash);color:var(--teal)}
+a.lg:hover{background:var(--mist);color:var(--teal)}
+a.lg:hover .fl{transform:rotate(-12deg) scale(1.1)}
+@media (max-width:899px){.langsw{margin:10px 0 0;align-self:flex-start}.lg{padding:6px 14px 6px 6px;font-size:.95rem}.lg .fl{width:28px;height:28px}}
+
+/* brand strip with logos, and a one-row scrolling clients strip */
+.brand-marquee{padding:20px 0}
+.brand-marquee ul{gap:16px;animation-duration:38s}
+.bt{display:grid;place-items:center;height:84px;min-width:176px;padding:12px 26px;background:#fff;border:1.5px solid var(--line);border-radius:18px;transition:transform .3s var(--ease),border-color .25s,box-shadow .3s;flex:none}
+.bt:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 18px 28px -22px rgba(36,95,115,.7)}
+.bt.logo img{height:46px;width:auto;max-width:150px;object-fit:contain}
+.bt.word span{font:700 1.5rem/1 var(--display);color:var(--teal);letter-spacing:-.01em;white-space:nowrap}
+.brand-marquee li.bt{padding:12px 26px}
+.logo-marquee{padding:8px 0 4px;border:0;background:transparent}
+.logo-marquee ul{gap:16px;animation-duration:46s;padding:6px 8px}
+.logo-marquee li{flex:none;width:150px;height:150px;display:grid;place-items:center;padding:14px;background:#fff;border:1.5px solid var(--line);border-radius:20px;transition:transform .3s var(--ease),border-color .25s,box-shadow .3s}
+.logo-marquee li:hover{transform:translateY(-5px);border-color:var(--teal);box-shadow:0 20px 30px -22px rgba(36,95,115,.7)}
+.logo-marquee img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.marquee{font-size:1rem}
+.bname img{height:46px;width:auto;max-width:180px;display:block}
+@media (max-width:640px){.logo-marquee li{width:118px;height:118px;padding:10px}.bt{height:72px;min-width:140px}.bt.logo img{height:38px}}
+
+/* perks band under the hero, delivery panel */
+.perks{background:#fff;border-bottom:1px solid var(--line)}
+.perks ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.perks li{display:flex;gap:14px;align-items:center;padding:20px 18px;border-left:1px solid var(--line)}
+.perks li:first-child{border-left:0;padding-left:0}
+.perks .fi{width:24px;height:24px;padding:11px;background:var(--wash);border-radius:14px;box-sizing:content-box}
+.perks b{display:block;font:600 1.02rem/1.25 var(--display)}
+.perks span{display:block;color:var(--muted);font-size:.9rem;line-height:1.35}
+.delivery{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin-top:48px;padding:clamp(22px,3vw,36px);border-radius:22px;background:var(--teal);color:#fff}
+.delivery .fi.huge{stroke:#fff;width:84px;height:84px}
+.delivery h2{font-size:clamp(1.5rem,2.6vw,2.2rem);margin-bottom:8px}
+.delivery p{margin:0;color:#DCEBEF;max-width:70ch}
+@media (max-width:1060px){.perks ul{grid-template-columns:repeat(2,minmax(0,1fr))}.perks li:nth-child(3){border-left:0;padding-left:0}.perks li{border-top:1px solid var(--line)}.perks li:nth-child(-n+2){border-top:0}}
+@media (max-width:640px){.perks ul{grid-template-columns:minmax(0,1fr)}.perks li{border-left:0;padding-left:0;border-top:1px solid var(--line)}.perks li:first-child{border-top:0}.delivery{grid-template-columns:1fr}}
+
+/* =====================================================================
+   v6: photo backgrounds (hero slideshow, call-to-action band, services)
+   ===================================================================== */
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--teal)}
+.hero-bg .hb{position:absolute;inset:-2%;background-size:cover;background-position:center;opacity:0}
+.hero-bg .hb1{background-image:url(img/hero/hero-1.jpg);opacity:.5}
+.hero-bg .hb2{background-image:url(img/hero/hero-2.jpg)}
+.hero-bg .hb3{background-image:url(img/hero/hero-3.jpg)}
+.hero-bg .hb4{background-image:url(img/hero/hero-4.jpg)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,95,115,.95) 0%,rgba(36,95,115,.8) 40%,rgba(36,95,115,.4) 70%,rgba(36,95,115,.1) 100%)}
+html.js .hero-bg .hb{opacity:0;animation:heroslide 28s ease-in-out infinite}
+html.js .hero-bg .hb2{animation-delay:7s}
+html.js .hero-bg .hb3{animation-delay:14s}
+html.js .hero-bg .hb4{animation-delay:21s}
+@keyframes heroslide{0%{opacity:0;transform:scale(1.07)}5%{opacity:.85}24%{opacity:.85;transform:scale(1)}30%{opacity:0;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+.hero .flow{z-index:1}
+.hero-copy,.hero .wrap{z-index:2}
+.hero-mark{z-index:2}
+.cta-band{background-image:linear-gradient(rgba(36,95,115,.9),rgba(23,63,79,.94)),url(img/hero/band.jpg);background-size:cover;background-position:center}
+.svc-block .wrap{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}
+.svc-block.alt .wrap{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}
+.svc-ph{border-radius:26px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 34px 50px -36px rgba(15,42,52,.6);background:var(--wash)}
+.svc-ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.svc-block:hover .svc-ph img{transform:scale(1.04)}
+.svc-block.alt .svc-ph{order:2}
+@media (max-width:899px){.svc-block .wrap,.svc-block.alt .wrap{grid-template-columns:minmax(0,1fr)}.svc-block.alt .svc-ph{order:0}.hero-bg::after{background:linear-gradient(180deg,rgba(36,95,115,.9),rgba(36,95,115,.7))}}
+@media (prefers-reduced-motion:reduce){html.js .hero-bg .hb{animation:none}html.js .hero-bg .hb1{opacity:.5}}

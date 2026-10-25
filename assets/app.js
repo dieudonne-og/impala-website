@@ -276,16 +276,16 @@
   var shop = $("#shop");
   if (shop) {
     var qi = $("#q"), rowsEl = $("#rows"), res = $("#results"), grid = $("#results-grid"), more = $("#more"), cn = $("#count"), rem = $("#results-empty"), lf = $("#live-facets"), sortSel2 = $("#sort");
-    var st = { q: "", cat: "", brands: [], sizes: [], sort: "" }, data = null, hits = [], shownN = 0, PAGE = 48;
+    var st = { q: "", cat: "", brands: [], sizes: [], sort: "", all: false }, data = null, hits = [], shownN = 0, PAGE = 48;
     var cardHtml = function (p) {
       var tags = (p.b ? '<span class="tag">' + esc(p.b) + '</span>' : "") + (p.z ? '<span class="tag sz">' + esc(p.z) + '</span>' : "");
       var media = p.ph ? '<img src="' + esc(p.ph) + '" alt="" loading="lazy" width="300" height="300">' : (ICONS()[p.i] || "");
       return '<article class="card"><a class="cmedia" href="' + esc(p.u[L]) + '" tabindex="-1" aria-hidden="true">' + media + '</a><div class="cbody">' +
-        '<a class="ccat" href="' + esc(p.cu[L]) + '">' + esc(p.c[L]) + '</a><div class="tags">' + tags + '</div><h3><a href="' + esc(p.u[L]) + '">' + esc(p[L]) + '</a></h3>' +
-        '<div class="cact"><div class="qtyin" role="group" aria-label="' + T.qty + '"><button type="button" class="qm" aria-label="-">&minus;</button><input type="number" min="1" max="999" value="1" inputmode="numeric" aria-label="' + T.qty + '"><button type="button" class="qp" aria-label="+">+</button></div>' +
+        '<a class="ccat" href="' + esc(p.cu[L]) + '">' + esc(p.c[L]) + '</a><h3><a href="' + esc(p.u[L]) + '">' + esc(p[L]) + '</a></h3><div class="tags">' + tags + '</div>' +
+        '<p class="price">' + T.price_req + '</p><div class="cact two"><a class="btn ghost sm" href="' + esc(p.u[L]) + '">' + T.view_details + '</a>' +
         '<button class="add" type="button" aria-pressed="false" data-id="' + p.id + '" data-en="' + esc(p.en) + '" data-fr="' + esc(p.fr) + '" data-uen="' + esc(p.u.en) + '" data-ufr="' + esc(p.u.fr) + '" data-icon="' + p.i + '" data-brand="' + esc(p.b) + '" data-size="' + esc(p.z) + '" data-ph="' + esc(p.ph) + '">' + T.add + '</button></div></div></article>';
     };
-    var active = function () { return st.q.trim() || st.cat || st.brands.length || st.sizes.length; };
+    var active = function () { return st.q.trim() || st.cat || st.brands.length || st.sizes.length || st.all; };
     var loadData = function (cb) { if (data) return cb(); fetch(CFG.dataUrl).then(function (r) { return r.json(); }).then(function (j) { data = j; cb(); }); };
     var group = function (label, key, counts, keys) {
       return '<div class="fgroup"><span class="flabel">' + label + '</span><div class="fchips">' + keys.map(function (k) {
@@ -328,16 +328,17 @@
       st.cat = c; st.brands = []; st.sizes = [];
       $$(".catchips .fchip").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.cat === c); });
     };
-    var tm; qi.addEventListener("input", function () { st.q = qi.value; st.brands = []; st.sizes = []; clearTimeout(tm); tm = setTimeout(run, 120); });
+    var tm; qi.addEventListener("input", function () { st.q = qi.value; st.brands = []; st.sizes = []; st.all = false; clearTimeout(tm); tm = setTimeout(run, 120); });
     if (sortSel2) sortSel2.addEventListener("change", function () { st.sort = sortSel2.value; run(false); });
-    $$(".catchips .fchip").forEach(function (b) { b.addEventListener("click", function () { setCat(b.dataset.cat); run(); }); });
+    $$(".catchips .fchip").forEach(function (b) { b.addEventListener("click", function () { st.all = false; setCat(b.dataset.cat); run(); }); });
     lf.addEventListener("click", function (e) {
       var c = e.target.closest(".fchip"), x = e.target.closest("[data-clear]");
       if (c) { var k = c.dataset.k, v = c.dataset.v, i = st[k].indexOf(v); if (i > -1) st[k].splice(i, 1); else st[k].push(v); c.setAttribute("aria-pressed", i === -1); run(false); }
-      if (x) { st = { q: "", cat: "", brands: [], sizes: [], sort: st.sort }; qi.value = ""; setCat(""); run(); }
+      if (x) { st = { q: "", cat: "", brands: [], sizes: [], sort: st.sort, all: false }; qi.value = ""; setCat(""); run(); }
     });
     more.addEventListener("click", function () { draw(true); });
-    window.IMPALA_SHOP = { set: function (q, cat) { qi.value = q || ""; st.q = qi.value; setCat(cat || ""); run(); var r = shop.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top - 76, behavior: reduce ? "auto" : "smooth" }); } };
+    var showAll = $("#showall"); if (showAll) showAll.addEventListener("click", function () { st.all = true; run(); });
+    window.IMPALA_SHOP = { set: function (q, cat) { qi.value = q || ""; st.q = qi.value; st.all = false; setCat(cat || ""); run(); var r = shop.getBoundingClientRect(); window.scrollTo({ top: window.scrollY + r.top - 76, behavior: reduce ? "auto" : "smooth" }); } };
     var mq = /[?&]q=([^&]*)/.exec(location.search); if (mq) { qi.value = decodeURIComponent(mq[1].replace(/\+/g, " ")); st.q = qi.value; run(); }
   }
 
